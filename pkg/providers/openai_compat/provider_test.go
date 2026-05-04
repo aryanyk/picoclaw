@@ -990,6 +990,9 @@ func TestNormalizeModel_UsesAPIBase(t *testing.T) {
 	); got != "deepseek/deepseek-v3.2" {
 		t.Fatalf("normalizeModel(novita) = %q, want %q", got, "deepseek/deepseek-v3.2")
 	}
+	if got := normalizeModel("qwen/qwen3-coder-480b-a35b-instruct", "https://integrate.api.nvidia.com/v1"); got != "qwen/qwen3-coder-480b-a35b-instruct" {
+		t.Fatalf("normalizeModel(nvidia) = %q, want %q", got, "qwen/qwen3-coder-480b-a35b-instruct")
+	}
 }
 
 func TestProvider_RequestTimeoutDefault(t *testing.T) {
